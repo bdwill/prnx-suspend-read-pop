@@ -1,4 +1,5 @@
 Param ( 
+    [Parameter(Mandatory=$true)][string]$VMName
     [Parameter(Mandatory=$true)][ValidateSet("ReadsOn", "ReadsOff")][string]$Mode
 )
 

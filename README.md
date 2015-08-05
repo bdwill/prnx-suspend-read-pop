@@ -19,8 +19,6 @@ This script only works for suspending and resuming read cache population for one
 
 ## Usage
 
-#### This version of the script is to be used with FVP Enterprise.
-
 * Download zip file or clone this repository.
 * Open a PowerShell command prompt on the server and execute: Read-Host -AsSecureString -prompt "Enter password" | ConvertFrom-SecureString | Out-File fvp_enc_pass.txt 
 * Enter the username and password for the service account or username that is being used for FVP management server.
