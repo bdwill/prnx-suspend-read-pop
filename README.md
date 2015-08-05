@@ -19,12 +19,11 @@ This script only works for suspending and resuming read cache population for one
 
 ## Usage
 
-* Download zip file or clone this repository.
-* Open a PowerShell command prompt on the server and execute: Read-Host -AsSecureString -prompt "Enter password" | ConvertFrom-SecureString | Out-File fvp_enc_pass.txt 
-* Enter the username and password for the service account or username that is being used for FVP management server.
+* Download zip file or clone this repository then extract it to a directory such as C:\FVP
+* Open a PowerShell command prompt and change directory to the directory you chose (C:\FVP) on the server and execute: Read-Host -AsSecureString -prompt "Enter password" | ConvertFrom-SecureString | Out-File fvp_enc_pass.txt 
+* Enter the password for the service account or the password of the username that is being used for FVP management server.
 * Edit PrnxReadPopulation.ps1 to include the username and IP address/FQDN used for the PernixData management server.
 * Temporary files will be stored in c:\temp. Change this if necessary.
-* Modify VNAME on line 22 to be the name of the VM that will have the read cache population suspended.
-* Create a new Windows task and schedule it to run at the appropriate time.
+* Create a new Windows task and schedule it to run at the appropriate time (before an after backup or other sequential IO).
 * For pre-backup operations, the command that will be run is C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -Command C:\<FOLDER_WHERE_YOU_STORED_SCRIPT>\PrnxReadPopulation.ps1 -VMName 'VM Name Here' -Mode ReadsOff
 * For post-backup operations, the command that will be run is C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -Command C:\<FOLDER_WHERE_YOU_STORED_SCRIPT>\PrnxReadPopulation.ps1 -VMName 'VM Name Here' -Mode ReadsOn
